@@ -14,6 +14,10 @@ After flutter installation you need to run following commands:
 2. flutter pub get
 3. dart run build_runner build --delete-conflicting-outputs
 
+If you want to build iOS application run following commands in the app directory:
+1. cd ios
+2. pod install
+
 Then connect device or emulator to your IDE and execute following commands:
 1. flutter run
 
