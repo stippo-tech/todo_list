@@ -61,6 +61,9 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
           .delete(task: event.task)
           .then((value) => add(TasksFetchAndUpdate()));
     });
+    on<TasksFilterPressed>((event, emit) {
+      emit(state.copyWith(filter: event.filter));
+    });
 
     _init();
   }

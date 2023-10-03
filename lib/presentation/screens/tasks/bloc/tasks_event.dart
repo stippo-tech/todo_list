@@ -22,3 +22,9 @@ class TasksMarkAsCompletedPressed implements TasksEvent {
 
   TasksMarkAsCompletedPressed(this.task);
 }
+
+class TasksFilterPressed implements TasksEvent {
+  final TasksFilter filter;
+
+  TasksFilterPressed(this.filter);
+}
