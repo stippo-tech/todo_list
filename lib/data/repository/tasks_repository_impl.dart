@@ -14,8 +14,8 @@ final class TasksRepositoryImpl extends BaseRepository
     if (response.statusCode != 200) {
       throw TasksFetchException();
     }
-    final data = jsonDecode(response.body) as List<Map<String, dynamic>>;
-    return data.map((e) => Task.fromJson(e)).toList();
+    final data = jsonDecode(response.body);
+    return data.map<Task>((e) => Task.fromJson(e)).toList();
   }
 
   @override
@@ -37,7 +37,7 @@ final class TasksRepositoryImpl extends BaseRepository
     String? title,
   }) async {
     final response = await client.patch(
-      baseUri,
+      Uri.parse(url),
       headers: {HttpHeaders.contentTypeHeader: ContentType.json.value},
       body: jsonEncode({
         if (title != null) 'title': title,
