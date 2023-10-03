@@ -1,20 +1,26 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
+import 'package:todo_list/presentation/di/init_di.dart';
+import 'package:todo_list/presentation/router/app_router.dart';
 
 void main() {
-  runApp(const MainApp());
+  initDi();
+
+  runApp(_TodoListApplication());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class _TodoListApplication extends StatelessWidget {
+  _TodoListApplication();
+
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp.router(
+      // routerConfig: _appRouter.config(),
+      routerDelegate: _appRouter.delegate(initialRoutes: [const AuthRoute()]),
+      routeInformationParser: _appRouter.defaultRouteParser(),
     );
   }
 }
