@@ -52,7 +52,7 @@ final class TasksRepositoryImpl extends BaseRepository
 
   @override
   Future<void> deleteTask(String url) async {
-    final response = await http.delete(baseUri);
+    final response = await http.delete(Uri.parse(url));
     if (response.statusCode != 200) {
       throw TasksDeleteException();
     }
