@@ -19,7 +19,7 @@ class _TodoListApplication extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      routerDelegate: _appRouter.delegate(initialRoutes: [const AuthRoute()]),
+      routerDelegate: _appRouter.delegate(initialRoutes: [AuthRoute()]),
       routeInformationParser: _appRouter.defaultRouteParser(),
     );
   }
