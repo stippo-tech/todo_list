@@ -37,7 +37,7 @@ class TasksScreen extends StatelessWidget {
                 },
               ),
               child: Container(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: Colors.blue,
                   borderRadius: BorderRadius.circular(12),
@@ -52,6 +52,7 @@ class TasksScreen extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 12),
             Expanded(
                 child: BlocBuilder<TasksBloc, TasksState>(
                     bloc: _bloc,

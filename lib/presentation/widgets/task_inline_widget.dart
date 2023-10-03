@@ -35,6 +35,7 @@ class TaskInlineWidget extends StatelessWidget {
                 fontWeight: FontWeight.w500,
                 color: Colors.white,
               ),
+              overflow: TextOverflow.ellipsis,
             ),
           ),
           _IconButton(
