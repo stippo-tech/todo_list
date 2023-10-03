@@ -1,6 +1,7 @@
 import 'dart:core';
 
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:todo_list/presentation/di/init_di.dart';
 import 'package:todo_list/presentation/router/app_router.dart';
 
@@ -13,7 +14,7 @@ void main() {
 class _TodoListApplication extends StatelessWidget {
   _TodoListApplication();
 
-  final _appRouter = AppRouter();
+  final _appRouter = GetIt.I.get<AppRouter>();
 
   @override
   Widget build(BuildContext context) {

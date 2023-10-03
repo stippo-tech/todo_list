@@ -12,7 +12,7 @@ class Task with _$Task {
     required String title,
     required String url,
     required bool completed,
-    String? order,
+    int? order,
   }) = _Task;
 
   factory Task.fromJson(Map<String, dynamic> json) => _$TaskFromJson(json);
