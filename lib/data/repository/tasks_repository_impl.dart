@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:http/http.dart' as http;
 import 'package:todo_list/data/exception/tasks_operation_exception.dart';
 import 'package:todo_list/data/repository/base_repository.dart';
 import 'package:todo_list/domain/model/task.dart';
@@ -11,7 +10,7 @@ final class TasksRepositoryImpl extends BaseRepository
     implements TasksRepository {
   @override
   Future<List<Task>> getAllTasks() async {
-    final response = await http.get(baseUri);
+    final response = await client.get(baseUri);
     if (response.statusCode != 200) {
       throw TasksFetchException();
     }
@@ -21,7 +20,7 @@ final class TasksRepositoryImpl extends BaseRepository
 
   @override
   Future<void> addTask({required String title}) async {
-    final response = await http.post(
+    final response = await client.post(
       baseUri,
       headers: {HttpHeaders.contentTypeHeader: ContentType.json.value},
       body: jsonEncode({'title': title}),
@@ -37,7 +36,7 @@ final class TasksRepositoryImpl extends BaseRepository
     bool? completeness,
     String? title,
   }) async {
-    final response = await http.patch(
+    final response = await client.patch(
       baseUri,
       headers: {HttpHeaders.contentTypeHeader: ContentType.json.value},
       body: jsonEncode({
@@ -52,7 +51,7 @@ final class TasksRepositoryImpl extends BaseRepository
 
   @override
   Future<void> deleteTask(String url) async {
-    final response = await http.delete(Uri.parse(url));
+    final response = await client.delete(Uri.parse(url));
     if (response.statusCode != 200) {
       throw TasksDeleteException();
     }
